@@ -1,0 +1,20 @@
+{
+  "name": "fullstack-react-aws-iac",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "infrastructure"
+  ],
+  "scripts": {
+    "frontend": "pnpm --filter frontend dev",
+    "backend": "pnpm --filter backend dev",
+    "infra": "cd infrastructure && pnpm cdk deploy", 
+    "build": "pnpm -r build"
+  },
+  "keywords": [],
+  "author": "Enrique Gimenez",
+  "license": "ISC",
+  "packageManager": "pnpm@10.21.0"
+}

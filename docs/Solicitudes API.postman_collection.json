@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "07fca36e-6e42-4967-8157-30d3fd224f7a",
+		"name": "Solicitudes API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13562320",
+		"_collection_link": "https://solar-trinity-754498.postman.co/workspace/EG-Software-Factory~a610d5cf-c689-46f1-9bb3-87147c4b03fe/collection/13562320-07fca36e-6e42-4967-8157-30d3fd224f7a?action=share&source=collection_link&creator=13562320"
+	},
+	"item": [
+		{
+			"name": "GET /solicitudes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/solicitudes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"solicitudes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /solicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/solicitudes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"solicitudes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

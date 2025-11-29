@@ -1,0 +1,6 @@
+{
+  "app": "pnpx ts-node bin/app.ts",
+  "context": {
+    "aws-cdk:enableDiffNoFail": true
+  }
+}

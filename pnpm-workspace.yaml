@@ -1,7 +1,7 @@
 packages:
   - backend
   - frontend
-  - infraestructure
+  - infrastructure
   - shared
 
 onlyBuiltDependencies:

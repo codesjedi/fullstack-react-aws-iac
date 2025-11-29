@@ -15,3 +15,13 @@ export interface CreateSolicitudRequest {
   type: string; 
   comments: string;
 }
+
+export interface CreateSolicitudResponse {
+  message: string;
+  data: Solicitud;
+}
+
+export interface GetSolicitudesResponse {
+  count: number;
+  data: Solicitud[];
+}

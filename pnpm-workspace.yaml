@@ -1,0 +1,8 @@
+packages:
+  - backend
+  - frontend
+  - infraestructure
+  - shared
+
+onlyBuiltDependencies:
+  - esbuild

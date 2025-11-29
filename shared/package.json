@@ -2,5 +2,9 @@
   "name": "shared",
   "version": "1.0.0",
   "main": "types/solicitud.ts",
-  "types": "types/solicitud.ts"
+  "types": "types/solicitud.ts",
+  "exports": {
+    ".": "./types/solicitud.ts",
+    "./types": "./types/solicitud.ts"
+  }
 }

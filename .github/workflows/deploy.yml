@@ -1,0 +1,60 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - feature/implementation
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Backend
+        run: pnpm backend:build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy Infrastructure
+        run: |
+          cd infrastructure
+          pnpm cdk deploy --all --require-approval never --outputs-file outputs.json
+
+      - name: Generate Frontend Env
+        run: node scripts/generate-frontend-env.js
+
+      - name: Build Frontend
+        run: pnpm frontend:build
+
+      - name: Sync Frontend to S3
+        run: |
+          BUCKET_NAME=$(jq -r '.SolicitudesFrontendStack.BucketName' infrastructure/outputs.json)
+          echo "Syncing to bucket: $BUCKET_NAME"
+          aws s3 sync frontend/dist s3://$BUCKET_NAME --delete
+
+      - name: Invalidate CloudFront
+        run: |
+          DIST_ID=$(jq -r '.SolicitudesFrontendStack.DistributionId' infrastructure/outputs.json)
+          echo "Invalidating distribution: $DIST_ID"
+          aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"

@@ -1,2 +1,4 @@
 **/node_modules
 cdk.out
+backend/dist
+frontend/.env

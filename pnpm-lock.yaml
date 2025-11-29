@@ -94,7 +94,7 @@ importers:
         specifier: ^7.2.4
         version: 7.2.4(@types/node@24.10.1)
 
-  infraestructure:
+  infrastructure:
     devDependencies:
       '@types/node':
         specifier: ^24.10.1

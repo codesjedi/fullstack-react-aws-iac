@@ -18,8 +18,6 @@ export class FrontendStack extends cdk.Stack {
 
     const websiteBucket = new s3.Bucket(this, 'WebsiteBucket', {
       bucketName: `solicitudes-frontend-${this.account}`,
-      websiteIndexDocument: 'index.html',
-      websiteErrorDocument: 'index.html',
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
@@ -65,7 +63,7 @@ export class FrontendStack extends cdk.Stack {
       exportName: 'SolicitudesFrontendBucket',
     })
 
-    new cdk.CfnOutput(this, 'DistributionId', {
+    new cdk.CfnOutput(this, 'FrontendUrl', {
       value: this.distributionUrl,
       exportName: 'SolicitudesFrontendUrl',
       description: 'URL del frontend'

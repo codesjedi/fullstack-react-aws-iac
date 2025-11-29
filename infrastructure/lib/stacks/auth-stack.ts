@@ -35,12 +35,6 @@ export class AuthStack extends cdk.Stack {
         userPassword: true,
         userSrp: true,
       },
-      oAuth: {
-        flows: {
-          implicitCodeGrant: false,
-          authorizationCodeGrant: false
-        }
-      },
       generateSecret: false,
     });
 

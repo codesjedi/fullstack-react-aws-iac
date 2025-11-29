@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "esbuild src/handlers/*.ts --bundle --platform=node --target=node20 --outdir=dist --format=cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

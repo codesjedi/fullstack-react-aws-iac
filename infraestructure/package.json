@@ -1,0 +1,24 @@
+{
+  "name": "infraestructure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "cdk": "cdk",
+    "deploy": "cdk deploy --all",
+    "synth": "cdk synth"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.21.0",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "aws-cdk": "^2.1033.0",
+    "aws-cdk-lib": "^2.230.0",
+    "constructs": "^10.4.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

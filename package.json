@@ -9,10 +9,15 @@
     "shared"
   ],
   "scripts": {
-    "frontend": "pnpm --filter frontend dev",
-    "backend": "pnpm --filter backend dev",
-    "infra": "cd infrastructure && pnpm cdk deploy", 
-    "build": "pnpm -r build"
+    "frontend:dev": "pnpm --filter frontend dev",
+    "frontend:build": "pnpm --filter frontend build",
+    "backend:dev": "pnpm --filter backend dev",
+    "backend:build": "pnpm --filter backend build",
+    "infra:synth": "cd infrastructure && pnpm cdk synth", 
+    "infra:deploy": "cd infrastructure && pnpm cdk deploy --all",
+    "infra:destroy": "cd infrastructure && pnpm cdk destroy --all",
+    "build:all": "pnpm backend:build && pnpm frontend:build",
+    "deploy": "pnpm build:all && pnpm infra:deploy"
   },
   "keywords": [],
   "author": "Enrique Gimenez",

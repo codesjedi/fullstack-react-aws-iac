@@ -27,6 +27,7 @@ export class BackendStack extends cdk.Stack {
           TABLE_NAME: props.table.tableName,
         },
         timeout: cdk.Duration.seconds(10),
+        memorySize: 256,
       }
     )
 
@@ -40,6 +41,7 @@ export class BackendStack extends cdk.Stack {
           TABLE_NAME: props.table.tableName,
         },
         timeout: cdk.Duration.seconds(10),
+        memorySize: 256,
       }
     )
 

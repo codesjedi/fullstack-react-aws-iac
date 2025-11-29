@@ -29,11 +29,27 @@ export const SolicitudesTable = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading">
+        <div className="spinner"></div>
+        <span>Cargando solicitudes...</span>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="admin-container">
+        <div className="message error-message">
+          {error}
+        </div>
+        <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+          <button onClick={loadSolicitudes} className="btn-secondary">
+            Reintentar
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (

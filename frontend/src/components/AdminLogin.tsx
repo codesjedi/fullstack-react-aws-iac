@@ -21,7 +21,7 @@ export const AdminLogin = () => {
       navigate('/admin');
     } catch (err) {
       console.error('Login failed:', err);
-      setError('Invalid username or password');
+      setError('Usuario o contraseña incorrectos');
     } finally {
       setLoading(false);
     }
@@ -56,7 +56,7 @@ export const AdminLogin = () => {
             />
           </div>
 
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="error-text">{error}</div>}
 
           <button type="submit" disabled={loading} className="btn-primary">
             {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}

@@ -3,6 +3,7 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 
 import { DatabaseStack } from '../lib/stacks/database-stack';
+import { AuthStack } from '../lib/stacks/auth-stack';
 
 const app = new cdk.App();
 
@@ -12,3 +13,5 @@ const env = {
 }
 
 const databaseStack = new DatabaseStack(app, 'SolicitudesDbStack', { env })
+
+const authStack = new AuthStack(app, 'SolicitudesAuthStack', { env })

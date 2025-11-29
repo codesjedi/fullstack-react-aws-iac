@@ -9,6 +9,14 @@ const TABLE_NAME = process.env.TABLE_NAME!;
 
 export const handler = async (event: APIGatewayProxyEvent):
   Promise<APIGatewayProxyResult> => {
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+    'Access-Control-Allow-Methods': 'POST,OPTIONS',
+  };
+
   try {
     const body = JSON.parse(event.body || "{}");
 
@@ -22,7 +30,7 @@ export const handler = async (event: APIGatewayProxyEvent):
           message: "Missing required fields: name, email, amount, type",
         }),
       }
-    } 
+    }
 
     const solicitud = {
       id: uuidv4(),
@@ -41,12 +49,9 @@ export const handler = async (event: APIGatewayProxyEvent):
 
     return {
       statusCode: 201,
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
-      },
+      headers,
       body: JSON.stringify({
-        message: 'Solicitud creada', 
+        message: 'Solicitud creada',
         solicitud,
       })
     }

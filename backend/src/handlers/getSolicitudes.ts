@@ -11,16 +11,11 @@ export const handler = async (event: APIGatewayProxyEvent):
   Promise<APIGatewayProxyResult> => {
     try {
 
-      const authHeader = event.headers['Authorization'] || event.headers['authorization'];
-
-      if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return {
-          statusCode: 401,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ message: "Unauthorized" }),
-        };
+      const headers = {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+        'Access-Control-Allow-Methods': 'GET,OPTIONS'
       }
 
       const result = await docClient.send(new ScanCommand({
@@ -33,11 +28,7 @@ export const handler = async (event: APIGatewayProxyEvent):
 
       return {
         statusCode: 200,
-        headers: {
-          "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type,Authorization',
-        },
+        headers,
         body: JSON.stringify({ 
           count: solicitudes.length,
           data: solicitudes
